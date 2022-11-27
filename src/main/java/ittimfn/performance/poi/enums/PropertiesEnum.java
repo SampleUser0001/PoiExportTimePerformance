@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.util.Properties;
 
 public enum PropertiesEnum {
-    MEMORY_USEDRATE_THRESHOLD("memory.usedrate.threshold");
+    MEMORY_EXPORT_INTERVAL("memory.export.interval");
 
     private static Properties properties;
     

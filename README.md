@@ -6,5 +6,5 @@ Poiの出力時間を計測する。
 ``` bash
 column=100
 line=50000
-mvn exec:java -Dexec.mainClass="ittimfn.performance.poi.App" -Dexec.args="'${column}' '${line}'"
+mvn clean compile exec:java -Dexec.mainClass="ittimfn.performance.poi.App" -Dexec.args="'${column}' '${line}'"
 ```

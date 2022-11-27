@@ -9,7 +9,6 @@ import java.nio.file.Paths;
 import ittimfn.performance.poi.controller.ExcelExportController;
 import ittimfn.performance.poi.enums.PropertiesEnum;
 import ittimfn.performance.poi.util.Util;
-import lombok.Getter;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

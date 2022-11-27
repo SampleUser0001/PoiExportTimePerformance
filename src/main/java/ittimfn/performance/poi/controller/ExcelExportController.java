@@ -18,14 +18,13 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ittimfn.performance.poi.App;
 import ittimfn.performance.poi.model.ExportInfoModel;
 import lombok.Data;
-import lombok.Getter;
 import ittimfn.performance.poi.task.*;
 import ittimfn.performance.poi.util.Util;
 
@@ -58,7 +57,7 @@ public class ExcelExportController {
 
         this.exportInfo.setExportCsvPath(Paths.get(exportDir.toString(), "memory.csv").toString());
 
-        this.workbook = new XSSFWorkbook();
+        this.workbook = new SXSSFWorkbook();
         this.sheet = workbook.createSheet();
     }
 

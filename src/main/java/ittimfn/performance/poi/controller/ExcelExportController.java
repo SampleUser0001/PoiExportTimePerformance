@@ -48,6 +48,8 @@ public class ExcelExportController {
 
     private ExecutorService exec;
 
+    private ColumnIndexController columnIndexController;
+
     public ExcelExportController(int column, int line) {
         this.exportInfo = new ExportInfoModel();
         this.exportInfo.setColumn(column);
@@ -59,6 +61,9 @@ public class ExcelExportController {
 
         this.workbook = new SXSSFWorkbook();
         this.sheet = workbook.createSheet();
+        
+        this.columnIndexController = new ColumnIndexController(column);
+        
     }
 
     public void export() throws IOException {
@@ -77,12 +82,15 @@ public class ExcelExportController {
         try(FileOutputStream fos = new FileOutputStream(EXPORT_FILE_PATH);) {
             for(; this.exportInfo.currentLine < this.exportInfo.getLine() ; this.exportInfo.currentLine++ ){
                 Row row = sheet.createRow(this.exportInfo.currentLine);
+                
                 for(int j = 0; j < this.exportInfo.getColumn() ; j++ ) {
-                    Cell cell = row.createCell(j);
+                    
+                    Cell cell = row.createCell(this.columnIndexController.get());
 
                     // 適当な値を生成する。
                     cell.setCellValue(RandomStringUtils.randomAlphabetic(20));
                 }
+                this.columnIndexController.clear();
             }
             workbook.write(fos);
             fos.close();
@@ -127,4 +135,5 @@ public class ExcelExportController {
             writer.write(mapper.writeValueAsString(this.exportInfo));
         }
     }
+    
 }
